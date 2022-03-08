@@ -22,11 +22,7 @@ services:
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index.js
     networks:
       - node-network
-        #    volumes:
-        #- ./node:/usr/src/app
     tty: true
-    # ports:
-    #   - "3000:3000"
     depends_on:
       - db
 
@@ -34,7 +30,6 @@ services:
     image: mysql:5.7
     command: --innodb-use-native-aio=0
     container_name: db
-    # restart: always
     tty: true
     volumes:
       - ./mysql/database:/var/lib/mysql
